@@ -5,7 +5,7 @@ books = {
 }
 puts "Would you like to add more books?"
 answer = gets.chomp
-while answer == "yes"
+while answer == "yes" or answer == "delete"
 	case answer
 		when "yes"
 			 puts "Enter book title"
@@ -20,6 +20,15 @@ while answer == "yes"
 			 end
 			 puts "would you like to enter more enteries?"
 			 answer = gets.chomp
-		puts books
+			puts books
+		when "delete"
+			puts "Enter book title"
+			title = gets.chomp
+			if books[title.to_sym].nil?
+				puts "Book doesnt exist"
+			else
+				books.delete(title)
+				puts "Book deleted"
+			end
 	end
 end
