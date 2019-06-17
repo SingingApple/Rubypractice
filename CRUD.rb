@@ -1,34 +1,29 @@
-books = {
-	harrypotter: 5,
-	lotr: 7,
-	got: 6
+novel = {
+	Green_Eggs: 5,
+	Harry_Potter: 4,
+	Way_of_kings: 6
 }
-puts "Would you like to add more books?"
+puts "Would you like to add another book to your collection?"
 answer = gets.chomp
-while answer == "yes" or answer == "delete"
+while answer == "yes"
 	case answer
 		when "yes"
-			 puts "Enter book title"
-			 title = gets.chomp
-			 if books[title.to_sym].nil?
-			 	puts "Rating?"
-			 	rating = gets.chomp
-			 	books[title.to_sym] = rating.to_i
-			 	puts "Added #{title} in books with rating of #{rating}"
-			 else
-			 	puts "book already exists"
-			 end
-			 puts "would you like to enter more enteries?"
-			 answer = gets.chomp
-			puts books
-		when "delete"
-			puts "Enter book title"
-			title = gets.chomp
-			if books[title.to_sym].nil?
-				puts "Book doesnt exist"
+			puts "What book would you like to add?"
+			book = gets.chomp
+			if novel[book.to_sym].nil?
+				novel[book.to_sym]
+				puts "What rating from 1 to 10 would you give?"
+				rating = gets.chomp.to_i
+				novel[book.to_sym] = rating
+				puts "#{book} has been added with a rating of #{rating}"
 			else
-				books.delete(title)
-				puts "Book deleted"
+				puts "book already exists"
 			end
+		when "no"
+			puts "Exiting"
+			exit(0)
 	end
+	puts "Here's your novel collection: #{novel}"
+	puts "Would you like to enter more record?"
+	answer = gets.chomp 
 end
